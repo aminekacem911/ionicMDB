@@ -6,23 +6,20 @@
 
 <ion-content class="ion-padding background-image">
   <div class="d-flex justify-content-center h-100">
-    <div class="search"> <input class="search_input" type="text" name="key" placeholder="Search here..."> <a href="#" class="search_icon"><i class="fa fa-search"></i></a> </div>
-</div>
-  <!-- <ion-grid>
-    <ion-row>
-      <ion-col text-center>
-        Welcome to Dashboard!
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col text-center>
-        Your Registered EmailID : {{userEmail}}
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 
-  http://127.0.0.1:8000/api/search  +key
- -->
+    <ion-searchbar   [(ngModel)]="searchTitle" (ionChange)="searchMovie()" ></ion-searchbar>
+
+
+    <div class="img_box">
+      <img [src]="movieData.imageUrl">
+    </div>
+    <h1>{{ movieData.title }}</h1>
+    <p>{{ movieData.description }}</p>
+
+
+</div>
+
+<!--http://127.0.0.1:8000/api/search  +key-->
 
 
 
