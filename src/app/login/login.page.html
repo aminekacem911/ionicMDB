@@ -1,10 +1,13 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
 
+<br><br>
 <ion-content class="ion-padding">
+  <ion-row class="logo-row">
+    <ion-col></ion-col>
+    <ion-col width-67>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ22H-et3cLZZfMf8uFawJt_8y3nZ-Y1u2wWg&usqp=CAU"/>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
   <form class="form" [formGroup]="validations_form" (ngSubmit)="loginUser(validations_form.value)">
 
     <ion-item>

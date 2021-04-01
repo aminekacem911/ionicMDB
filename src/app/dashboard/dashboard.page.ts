@@ -18,27 +18,19 @@ export class DashboardPage implements OnInit {
   movieApiUrl = '';
   movieData = {
     title: '',
+    length:'',
     description: '',
-    imageUrl: ''
+    image: '',
+    year: '',
+    trailer :'',
+    rating:''
   };
   constructor(
     private navCtrl: NavController,
     private authService: AuthenticateService,
     private http: HttpClient,
 
-  ) {
-    const headers = new HttpHeaders()
-    .append('Content-Type', 'application/json')
-    .append('Access-Control-Allow-Headers', 'Content-Type')
-    .append('Access-Control-Allow-Methods', 'GET')
-    .append('Access-Control-Allow-Origin', '*');
-
-    // this.readAPI('http://127.0.0.1:8000/api/search&key=matrix',{headers});
-    // //this.readAPI('http://www.omdbapi.com/?i=tt3896198&apikey=ffb23b0').
-    //     subscribe((data) => {
-    //     console.log(data);
-    //   });
-  }
+  ) {}
 
   ngOnInit() {
 
@@ -47,7 +39,7 @@ export class DashboardPage implements OnInit {
       if (res !== null) {
         this.userEmail = res.email;
       } else {
-        this.navCtrl.navigateBack('');
+        this.navCtrl.navigateBack('/login');
       }
     }, err => {
       console.log('err', err);
@@ -71,14 +63,22 @@ export class DashboardPage implements OnInit {
     return this.http.get(URL);
   }
   searchMovie() {
-    console.log('recherche du film ' + encodeURIComponent(this.searchTitle).trim());
+    console.log('searching film ' + encodeURIComponent(this.searchTitle).trim());
     const search = encodeURIComponent(this.searchTitle).trim();
 
+    //http://www.omdbapi.com/?apikey=VOTRE_CLÉ_API&t='iron%20man.
+    //this.movieApiUrl = 'http://www.omdbapi.com/?apikey=ffb23b0&t=' + search;
     this.movieApiUrl = 'http://127.0.0.1:8000/api/search?key=' + search;
-
     this.readAPI(this.movieApiUrl)
       .subscribe((data) => {
       console.log(data);
+      this.movieData.title = data['result']['title'];
+      this.movieData.length = data['result']['length'];
+      this.movieData.year = data['result']['year'];
+      this.movieData.description = data['result']['plot'];
+      this.movieData.image = data['result']['poster'];
+      this.movieData.trailer = data['result']['trailer']['link'];
+      this.movieData.rating =data['result']['rating']
 
     });
   }
