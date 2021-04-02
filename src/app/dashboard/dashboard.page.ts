@@ -13,10 +13,10 @@ import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http'
 export class DashboardPage implements OnInit {
 
   userEmail: string;
-  searchTitle = '';
+  key = '';
 
-  movieApiUrl = '';
-  movieData = {
+  Apiurl = '';
+  movie = {
     title: '',
     length:'',
     description: '',
@@ -63,22 +63,19 @@ export class DashboardPage implements OnInit {
     return this.http.get(URL);
   }
   searchMovie() {
-    console.log('searching film ' + encodeURIComponent(this.searchTitle).trim());
-    const search = encodeURIComponent(this.searchTitle).trim();
-
-    //http://www.omdbapi.com/?apikey=VOTRE_CLÉ_API&t='iron%20man.
-    //this.movieApiUrl = 'http://www.omdbapi.com/?apikey=ffb23b0&t=' + search;
-    this.movieApiUrl = 'http://127.0.0.1:8000/api/search?key=' + search;
-    this.readAPI(this.movieApiUrl)
+   
+    const search = encodeURIComponent(this.key).trim();
+    this.Apiurl = 'http://127.0.0.1:8000/api/search?key=' + search;
+    this.readAPI(this.Apiurl)
       .subscribe((data) => {
       console.log(data);
-      this.movieData.title = data['result']['title'];
-      this.movieData.length = data['result']['length'];
-      this.movieData.year = data['result']['year'];
-      this.movieData.description = data['result']['plot'];
-      this.movieData.image = data['result']['poster'];
-      this.movieData.trailer = data['result']['trailer']['link'];
-      this.movieData.rating =data['result']['rating']
+      this.movie.title = data['result']['title'];
+      this.movie.length = data['result']['length'];
+      this.movie.year = data['result']['year'];
+      this.movie.description = data['result']['plot'];
+      this.movie.image = data['result']['poster'];
+      this.movie.trailer = data['result']['trailer']['link'];
+      this.movie.rating =data['result']['rating']
 
     });
   }

@@ -1,0 +1,30 @@
+ion-item{
+  border-radius: 15px 50px 30px;
+  margin-bottom:7%
+}
+.img
+{
+  --background: url("https://assets.nflxext.com/ffe/siteui/vlv3/92bb3a0b-7e91-40a0-b27b-f2c3ac9ef6e4/b2633c77-b52f-42e4-afec-b798af181499/TN-en-20210322-popsignuptwoweeks-perspective_alpha_website_medium.jpg") 0 0/100% 100% no-repeat;
+}
+ion-button{
+  border-radius: 30px;
+}
+.error-message{
+  color:orange;
+  font-weight: bold;
+  text-align: center;
+}
+.go-to-login{
+  padding-top: 5%;
+  color:red;
+  float:right
+}
+form{
+padding-top: 20%
+}
+
+.success-message{
+  color:green;
+  font-weight: bold;
+  text-align: center;
+}

@@ -1,35 +1,15 @@
 <br><br>
 
 <ion-content class="ion-padding background-image">
-
-
-    <ion-searchbar   [(ngModel)]="searchTitle" (ionChange)="searchMovie()" ></ion-searchbar>
-
-      <!-- <img [src]="movieData.imageUrl"> -->
-
-    <!-- <p>{{ movieData.description }}</p> -->
-
-    <!-- <div class="img_box">
-      <img [src]="movieData.image">
-
-    Title:<h1>{{ movieData.title }}</h1>
-    Description:<p>{{ movieData.description }}</p>
-    Length:<h1>{{ movieData.length }}</h1>
-    Year Released:<h1>{{ movieData.year }}</h1>
-
-
-</div> -->
-<!--http://127.0.0.1:8000/api/search  +key-->
-
-
+    <ion-searchbar   [(ngModel)]="key" (ionChange)="searchMovie()" ></ion-searchbar>
 <ion-card>
   <ion-card-header>
-    <center><img [src]="movieData.image"></center>
-    <ion-card-title>{{ movieData.title }}</ion-card-title>
+    <center><img [src]="movie.image"></center>
+    <ion-card-title>{{ movie.title }}</ion-card-title>
   </ion-card-header>
 
   <ion-card-content>
-    {{ movieData.description }}
+    {{ movie.description }}
   </ion-card-content>
 </ion-card>
 
@@ -37,7 +17,7 @@
   <ion-item>
     <ion-icon name="pin" slot="start"></ion-icon>
     <ion-label>TRAILER</ion-label>
-    <ion-button href="{{ movieData.trailer }}">View</ion-button>
+    <ion-button href="{{ movie.trailer }}">View</ion-button>
   </ion-item>
 
 </ion-card>
@@ -45,17 +25,17 @@
 <ion-card>
   <ion-item href="#" class="ion-activated">
     <ion-icon name="calendar" slot="start"></ion-icon>
-    <ion-label>Released Year: {{ movieData.year }}</ion-label>
+    <ion-label>Released Year: {{ movie.year }}</ion-label>
   </ion-item>
 
   <ion-item href="#">
     <ion-icon name="stopwatch" slot="start"></ion-icon>
-    <ion-label>Length: {{ movieData.length }}</ion-label>
+    <ion-label>Length: {{ movie.length }}</ion-label>
   </ion-item>
 
   <ion-item class="ion-activated">
     <ion-icon name="star-outline" slot="start"></ion-icon>
-    <ion-label>Rating : {{ movieData.rating }}</ion-label>
+    <ion-label>Rating : {{ movie.rating }}</ion-label>
   </ion-item>
 
 
@@ -64,6 +44,6 @@
 </ion-content>
 <ion-footer (click)="logout()">
   <ion-toolbar color="secondary">
-    <ion-title>Log out</ion-title>
+    <center><ion-title>Log out</ion-title></center>
   </ion-toolbar>
 </ion-footer>
